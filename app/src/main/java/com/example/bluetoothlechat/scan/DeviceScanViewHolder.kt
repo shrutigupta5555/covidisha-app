@@ -16,6 +16,7 @@
 package com.example.bluetoothlechat.scan
 
 import android.bluetooth.BluetoothDevice
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -28,16 +29,23 @@ class DeviceScanViewHolder(
 
     private val name = itemView.findViewById<TextView>(R.id.device_name)
     private val address = itemView.findViewById<TextView>(R.id.device_address)
+    private val userEmail = itemView.findViewById<TextView>(R.id.userKiEmail)
     private var bluetoothDevice: BluetoothDevice? = null
 
     init {
         itemView.setOnClickListener(this)
     }
+//    {"aakzsh": {}}
+    fun bind(d : Map<String,BluetoothDevice>) {
+        Log.i("bindzi", d.toString())
+        var key = d.keys.toList()[0]
+        var device = d.values.toList()[0]
 
-    fun bind(device: BluetoothDevice) {
         bluetoothDevice = device
         name.text = device.name
         address.text = device.address
+        userEmail.text = key
+
     }
 
     override fun onClick(view: View) {

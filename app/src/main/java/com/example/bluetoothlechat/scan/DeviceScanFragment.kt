@@ -57,6 +57,7 @@ class DeviceScanFragment : Fragment() {
             is ScanResults -> showResults(state.scanResults)
             is Error -> showError(state.message)
             is AdvertisementNotSupported -> showAdvertisingError()
+            else -> showNoDevices()
         }.exhaustive
     }
 
@@ -105,7 +106,7 @@ class DeviceScanFragment : Fragment() {
     private fun showResults(scanResults: Map<String, BluetoothDevice>) {
         if (scanResults.isNotEmpty()) {
             binding.deviceList.visible()
-            deviceScanAdapter.updateItems(scanResults.values.toList())
+            deviceScanAdapter.updateItems(scanResults.values.toList(), scanResults.keys.toList())
 
             binding.scanning.gone()
             binding.noDevices.gone()

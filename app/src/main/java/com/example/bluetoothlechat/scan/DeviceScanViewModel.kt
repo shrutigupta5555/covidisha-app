@@ -30,7 +30,7 @@ import com.example.bluetoothlechat.scan.DeviceScanViewState.*
 
 private const val TAG = "DeviceScanViewModel"
 // 30 second scan period
-private const val SCAN_PERIOD = 30000L
+private const val SCAN_PERIOD = 900000000000L
 
 class DeviceScanViewModel(app: Application) : AndroidViewModel(app) {
 
@@ -53,6 +53,10 @@ class DeviceScanViewModel(app: Application) : AndroidViewModel(app) {
     private var scanCallback: DeviceScanCallback? = null
     private val scanFilters: List<ScanFilter>
     private val scanSettings: ScanSettings
+//    private val bytes : ByteArray? = null
+//    private var userKiEmail : String? = null
+//    private var key : ParcelUuid? = null
+
 
     init {
         // Setup scan filters and settings
@@ -142,13 +146,23 @@ class DeviceScanViewModel(app: Application) : AndroidViewModel(app) {
             result: ScanResult
         ) {
             super.onScanResult(callbackType, result)
-            Log.i("baamzi", "${result.toString()}")
-            Log.i("baamzi", "${result.scanRecord}")
+            Log.i("baamzi", result.toString())
+            Log.i("baamzi", "${result.scanRecord?.serviceData}")
+
             Log.i("baamzi", "${result.rssi}")
-            result.device?.let { device ->
-                Log.i("baamzi", "${device.toString()}")
+            result?.let { item ->
+                Log.i("baamzi", item.toString())
                 Log.i("baamzi", "inside")
-                scanResults[device.address] = device
+//
+
+                var bytes = result.scanRecord?.serviceData?.values?.toList()?.get(0)
+                var userKiEmail = bytes?.let { String(it) }
+
+                if (userKiEmail == null){
+                    userKiEmail = "null"
+                }
+
+                scanResults[userKiEmail] = item.device
 
             }
             _viewState.value = ScanResults(scanResults)

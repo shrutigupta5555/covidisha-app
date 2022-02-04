@@ -209,7 +209,7 @@ object ChatServer {
          * AdvertiseCallback.ADVERTISE_FAILED_DATA_TOO_LARGE. Catch this error in the
          * onStartFailure() method of an AdvertiseCallback implementation.
          */
-        var fdata : String = "lol";
+        var fdata : String = "lmaol";
         val dataBuilder = AdvertiseData.Builder()
             .addServiceUuid(ParcelUuid(SERVICE_UUID))
             .setIncludeDeviceName(true)

@@ -21,13 +21,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bluetoothlechat.R
+import java.util.ArrayList
 
 class DeviceScanAdapter(
     private val onDeviceSelected: (BluetoothDevice) -> Unit
 ) : RecyclerView.Adapter<DeviceScanViewHolder>() {
 
-    private var items = listOf<BluetoothDevice>()
-
+    private var items = listOf<Map<String,BluetoothDevice>>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeviceScanViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.item_device, parent, false)
@@ -36,7 +36,7 @@ class DeviceScanAdapter(
 
     override fun onBindViewHolder(holder: DeviceScanViewHolder, position: Int) {
         items.getOrNull(position)?.let { result ->
-
+            Log.i("on bind", "$result")
             holder.bind(result)
         }
     }
@@ -45,8 +45,20 @@ class DeviceScanAdapter(
         return items.size
     }
 
-    fun updateItems(results: List<BluetoothDevice>) {
-        items = results
+    // [<>,<>]
+    //    <>
+//[{name, address}]
+//    ["aakzsh]
+//    {"aakzsh": {name,address}}
+    fun updateItems(results: List<BluetoothDevice>, keys: List<String>) {
+        var temporaryItem = ArrayList<Map<String,BluetoothDevice>>()
+        for (i in 0 until results.size) {
+            var m = HashMap<String, BluetoothDevice>()
+            m.put(keys[i], results[i])
+            temporaryItem.add(i, m)
+
+        }
+        items = temporaryItem
         notifyDataSetChanged()
     }
 }
