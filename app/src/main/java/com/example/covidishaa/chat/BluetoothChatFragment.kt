@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.bluetoothlechat.chat
+package com.example.covidishaa.chat
 
 import android.bluetooth.BluetoothDevice
 import android.content.Context
@@ -27,12 +27,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.bluetoothlechat.bluetooth.Message
-import com.example.bluetoothlechat.R
-import com.example.bluetoothlechat.bluetooth.ChatServer
-import com.example.bluetoothlechat.databinding.FragmentBluetoothChatBinding
-import com.example.bluetoothlechat.gone
-import com.example.bluetoothlechat.visible
+import com.example.covidishaa.bluetooth.Message
+import com.example.covidishaa.R
+import com.example.covidishaa.bluetooth.ChatServer
+import com.example.covidishaa.databinding.FragmentBluetoothChatBinding
+import com.example.covidishaa.gone
+import com.example.covidishaa.visible
 
 private const val TAG = "BluetoothChatFragment"
 

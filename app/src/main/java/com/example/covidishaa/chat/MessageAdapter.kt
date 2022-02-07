@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.bluetoothlechat.chat
+package com.example.covidishaa.chat
 
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bluetoothlechat.bluetooth.Message
-import com.example.bluetoothlechat.R
+import com.example.covidishaa.bluetooth.Message
+import com.example.covidishaa.R
 import java.lang.IllegalArgumentException
 
 private const val TAG = "MessageAdapter"

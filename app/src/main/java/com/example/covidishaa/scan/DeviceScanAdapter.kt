@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.bluetoothlechat.scan
+package com.example.covidishaa.scan
 
 import android.bluetooth.BluetoothDevice
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bluetoothlechat.R
+import com.example.covidishaa.R
 import java.util.ArrayList
 
 class DeviceScanAdapter(

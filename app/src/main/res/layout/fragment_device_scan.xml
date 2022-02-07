@@ -56,12 +56,6 @@
             android:text="@string/your_device_address"
             android:textStyle="normal" />
 
-        <Button
-            android:id="@+id/btn_scan_again"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Scan Again" />
-
         <TextView
             style="@style/TextAppearance.AppCompat.Title"
             android:layout_width="match_parent"

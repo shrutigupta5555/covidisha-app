@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.bluetoothlechat.bluetooth
+package com.example.covidishaa.bluetooth
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -25,8 +25,8 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.bluetoothlechat.R
-import com.example.bluetoothlechat.databinding.FragmentLocationRequiredBinding
+import com.example.covidishaa.R
+import com.example.covidishaa.databinding.FragmentLocationRequiredBinding
 
 private const val TAG = "LocationRequiredFrag"
 private const val LOCATION_REQUEST_CODE = 0

@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/bluetoothChatFragment"
-        android:name="com.example.bluetoothlechat.chat.BluetoothChatFragment"
+        android:name="com.example.covidishaa.chat.BluetoothChatFragment"
         android:label="BluetoothChatFragment" >
         <action
             android:id="@+id/action_find_new_device"
@@ -28,11 +28,11 @@
     </fragment>
     <fragment
         android:id="@+id/deviceListFragment"
-        android:name="com.example.bluetoothlechat.scan.DeviceScanFragment"
+        android:name="com.example.covidishaa.scan.DeviceScanFragment"
         android:label="DeviceListFragment" />
     <fragment
         android:id="@+id/locationRequiredFragment"
-        android:name="com.example.bluetoothlechat.bluetooth.LocationRequiredFragment"
+        android:name="com.example.covidishaa.bluetooth.LocationRequiredFragment"
         android:label="LocationRequiredFragment" >
         <action
             android:id="@+id/action_start_chat"
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/enableBluetoothFragment"
-        android:name="com.example.bluetoothlechat.bluetooth.EnableBluetoothFragment"
+        android:name="com.example.covidishaa.bluetooth.EnableBluetoothFragment"
         android:label="EnableBluetoothFragment" >
         <action
             android:id="@+id/action_check_location_permissions"

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.bluetoothlechat.bluetooth
+package com.example.covidishaa.bluetooth
 
 import android.app.Activity
 import android.bluetooth.BluetoothAdapter
@@ -25,8 +25,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.example.bluetoothlechat.R
-import com.example.bluetoothlechat.databinding.FragmentEnableBluetoothBinding
+import com.example.covidishaa.R
+import com.example.covidishaa.databinding.FragmentEnableBluetoothBinding
+
+//import com.example.covidishaa.databinding.FragmentEnableBluetoothBinding
 
 class EnableBluetoothFragment : Fragment() {
 

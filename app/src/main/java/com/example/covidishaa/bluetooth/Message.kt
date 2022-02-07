@@ -13,17 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.bluetoothlechat
+package com.example.covidishaa.bluetooth
 
-import android.view.View
-
-fun View.visible() {
-    this.visibility = View.VISIBLE
+/**
+ * This sealed class represents the messages sent between connected devices.
+ * The RemoteMessage class represents a message coming from a remote device.
+ * The LocalMessage class represents a message the user wants to send to the remote device.
+ *
+ * @param text is the message text the user sends to the other connected device.
+ */
+sealed class Message(val text: String) {
+    class RemoteMessage(text: String) : Message(text)
+    class LocalMessage(text: String) : Message(text)
 }
-
-fun View.gone() {
-    this.visibility = View.GONE
-}
-
-val <T> T.exhaustive: T
-    get() = this

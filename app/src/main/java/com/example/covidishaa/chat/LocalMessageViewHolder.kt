@@ -13,16 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.bluetoothlechat.bluetooth
+package com.example.covidishaa.chat
 
-/**
- * This sealed class represents the messages sent between connected devices.
- * The RemoteMessage class represents a message coming from a remote device.
- * The LocalMessage class represents a message the user wants to send to the remote device.
- *
- * @param text is the message text the user sends to the other connected device.
- */
-sealed class Message(val text: String) {
-    class RemoteMessage(text: String) : Message(text)
-    class LocalMessage(text: String) : Message(text)
+import android.view.View
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.example.covidishaa.bluetooth.Message
+import com.example.covidishaa.R
+
+class LocalMessageViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+    private val messageText = itemView.findViewById<TextView>(R.id.message_text)
+
+    fun bind(message: Message.LocalMessage) {
+        messageText.text = message.text
+    }
 }

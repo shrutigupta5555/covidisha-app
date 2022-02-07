@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.bluetoothlechat.scan
+package com.example.covidishaa.scan
 
 import android.app.Application
 import android.bluetooth.*
@@ -24,8 +24,8 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.bluetoothlechat.bluetooth.SERVICE_UUID
-import com.example.bluetoothlechat.scan.DeviceScanViewState.*
+import com.example.covidishaa.bluetooth.SERVICE_UUID
+import com.example.covidishaa.scan.DeviceScanViewState.*
 
 
 private const val TAG = "DeviceScanViewModel"

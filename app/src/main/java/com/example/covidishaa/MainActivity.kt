@@ -13,13 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.bluetoothlechat.scan
+package com.example.covidishaa
 
-import android.bluetooth.BluetoothDevice
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import com.example.covidishaa.bluetooth.ChatServer
 
-sealed class DeviceScanViewState {
-    object ActiveScan: DeviceScanViewState()
-    class ScanResults(val scanResults: Map<String, BluetoothDevice>): DeviceScanViewState()
-    class Error(val message: String): DeviceScanViewState()
-    object AdvertisementNotSupported: DeviceScanViewState()
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+
+    // Run the chat server as long as the app is on screen
+    override fun onStart() {
+        super.onStart()
+        ChatServer.startServer(application)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        ChatServer.stopServer()
+    }
 }

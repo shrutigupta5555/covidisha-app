@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.bluetoothlechat.scan
+package com.example.covidishaa.scan
 
 import android.bluetooth.BluetoothDevice
 import android.os.Bundle
@@ -26,13 +26,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.bluetoothlechat.R
-import com.example.bluetoothlechat.bluetooth.ChatServer
-import com.example.bluetoothlechat.databinding.FragmentDeviceScanBinding
-import com.example.bluetoothlechat.exhaustive
-import com.example.bluetoothlechat.gone
-import com.example.bluetoothlechat.scan.DeviceScanViewState.*
-import com.example.bluetoothlechat.visible
+import com.example.covidishaa.R
+import com.example.covidishaa.bluetooth.ChatServer
+import com.example.covidishaa.databinding.FragmentDeviceScanBinding
+import com.example.covidishaa.exhaustive
+import com.example.covidishaa.gone
+import com.example.covidishaa.scan.DeviceScanViewState.*
+import com.example.covidishaa.visible
 
 private const val TAG = "DeviceScanFragment"
 const val GATT_KEY = "gatt_bundle_key"

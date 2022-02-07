@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.bluetoothlechat.chat
+package com.example.covidishaa.chat
 
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bluetoothlechat.bluetooth.Message
-import com.example.bluetoothlechat.R
+import com.example.covidishaa.bluetooth.Message
+import com.example.covidishaa.R
 
 class RemoteMessageViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
