@@ -30,9 +30,9 @@ import com.example.bluetoothlechat.scan.DeviceScanViewState.*
 
 private const val TAG = "DeviceScanViewModel"
 // 30 second scan period
-private const val SCAN_PERIOD = 900000000000L
+private const val SCAN_PERIOD = 30000L
 
-class DeviceScanViewModel(app: Application) : AndroidViewModel(app) {
+open class DeviceScanViewModel(app: Application) : AndroidViewModel(app) {
 
     // LiveData for sending the view state to the DeviceScanFragment
     private val _viewState = MutableLiveData<DeviceScanViewState>()
@@ -104,6 +104,8 @@ class DeviceScanViewModel(app: Application) : AndroidViewModel(app) {
         scanCallback = null
         // return the current results
         _viewState.value = ScanResults(scanResults)
+
+        startScan()
     }
 
     /**
@@ -133,9 +135,14 @@ class DeviceScanViewModel(app: Application) : AndroidViewModel(app) {
         override fun onBatchScanResults(results: List<ScanResult>) {
             super.onBatchScanResults(results)
             for (item in results) {
-                item.device?.let { device ->
+                item?.let { itemkaitem ->
+                    var bytes = itemkaitem.scanRecord?.serviceData?.values?.toList()?.get(0)
+                    var userKiEmail = bytes?.let { String(it) }
 
-                    scanResults[device.address] = device
+                    if (userKiEmail == null){
+                        userKiEmail = "null"
+                    }
+                    scanResults[userKiEmail] = itemkaitem.device
                 }
             }
             _viewState.value = ScanResults(scanResults)

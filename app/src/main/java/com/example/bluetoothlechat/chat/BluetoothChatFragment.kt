@@ -87,6 +87,7 @@ class BluetoothChatFragment : Fragment() {
         showDisconnected()
 
         binding.connectDevices.setOnClickListener {
+            Log.i("new baamzi", "${R.id.action_find_new_device}")
             findNavController().navigate(R.id.action_find_new_device)
         }
 

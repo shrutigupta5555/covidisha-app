@@ -194,6 +194,13 @@ object ChatServer {
         advertiseCallback = null
     }
 
+    fun getRandomString(length: Int) : String {
+        val charset = ('a'..'z') + ('A'..'Z') + ('0'..'9')
+
+        return List(length) { charset.random() }
+            .joinToString("")
+    }
+
     /**
      * Returns an AdvertiseData object which includes the Service UUID and Device Name.
      */
@@ -209,7 +216,9 @@ object ChatServer {
          * AdvertiseCallback.ADVERTISE_FAILED_DATA_TOO_LARGE. Catch this error in the
          * onStartFailure() method of an AdvertiseCallback implementation.
          */
-        var fdata : String = "lmaol";
+
+
+        var fdata : String = getRandomString(6);
         val dataBuilder = AdvertiseData.Builder()
             .addServiceUuid(ParcelUuid(SERVICE_UUID))
             .setIncludeDeviceName(true)

@@ -49,19 +49,25 @@
 
         <TextView
             android:id="@+id/your_device_addr"
-            style="@style/TextAppearance.AppCompat.Medium"
+            style="@style/TextAppearance.AppCompat.Body1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:text="@string/your_device_address"
-            android:textStyle="bold" />
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_scan_again"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Scan Again" />
 
         <TextView
             style="@style/TextAppearance.AppCompat.Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="@string/scanning_header"
+            android:text="Recent Contacts"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -69,6 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone" />
+
     </LinearLayout>
 
     <TextView
