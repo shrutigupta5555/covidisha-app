@@ -30,7 +30,6 @@ class DeviceScanViewHolder(
     private val name = itemView.findViewById<TextView>(R.id.device_name)
     private val address = itemView.findViewById<TextView>(R.id.device_address)
     private val userEmail = itemView.findViewById<TextView>(R.id.userKiEmail)
-
     private var bluetoothDevice: BluetoothDevice? = null
 
     init {
@@ -43,9 +42,13 @@ class DeviceScanViewHolder(
         var device = d.values.toList()[0]
 
         bluetoothDevice = device
+
+
         name.text = device.name
         address.text = device.address
         userEmail.text = key
+
+
 
     }
 

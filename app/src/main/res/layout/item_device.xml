@@ -53,27 +53,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="111dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="44dp"
         android:layout_marginBottom="16dp"
         android:text="unique id"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/distance"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/device_address"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/distance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="212dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
-        android:text="distance"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/device_address"
-        app:layout_constraintVertical_bias="1.0" />
+
 
     <ImageView
         android:id="@+id/imageView4"
