@@ -21,6 +21,8 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.covidishaa.R
+import java.text.SimpleDateFormat
+import java.util.*
 
 class DeviceScanViewHolder(
     view: View,
@@ -30,6 +32,7 @@ class DeviceScanViewHolder(
     private val name = itemView.findViewById<TextView>(R.id.device_name)
     private val address = itemView.findViewById<TextView>(R.id.device_address)
     private val userEmail = itemView.findViewById<TextView>(R.id.userKiEmail)
+    private val time = itemView.findViewById<TextView>(R.id.time)
     private var bluetoothDevice: BluetoothDevice? = null
 
     init {
@@ -40,6 +43,8 @@ class DeviceScanViewHolder(
         Log.i("bindzi", d.toString())
         var key = d.keys.toList()[0]
         var device = d.values.toList()[0]
+        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
+        val currentDate = sdf.format(Date())
 
         bluetoothDevice = device
 
@@ -47,7 +52,7 @@ class DeviceScanViewHolder(
         name.text = device.name
         address.text = device.address
         userEmail.text = key
-
+        time.text = currentDate
 
 
     }
