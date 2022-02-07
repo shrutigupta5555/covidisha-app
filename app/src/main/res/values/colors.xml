@@ -20,4 +20,5 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="remote_message_background">#0288D1</color>
     <color name="local_message_background">#D1DBE0</color>
+    <color name="black">#000000</color>
 </resources>

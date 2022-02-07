@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "83709683129",
+    "project_id": "covidisha-c85ea",
+    "storage_bucket": "covidisha-c85ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83709683129:android:aa307951a525fb2b99c268",
+        "android_client_info": {
+          "package_name": "com.example.covidishaa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83709683129-qclsqisql9111qbh40no9unj9l7vrqc9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQPimfY10zCvecInC4wZGlMH3xqItS70k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "83709683129-qclsqisql9111qbh40no9unj9l7vrqc9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
