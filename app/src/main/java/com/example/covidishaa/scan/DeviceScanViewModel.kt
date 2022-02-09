@@ -182,6 +182,4 @@ open class DeviceScanViewModel(app: Application) : AndroidViewModel(app) {
             _viewState.value = Error(errorMessage)
         }
     }
-
-
 }
