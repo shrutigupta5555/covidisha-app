@@ -28,6 +28,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.covidishaa.bluetooth.Message.RemoteMessage
 import com.example.covidishaa.chat.DeviceConnectionState
+import com.example.covidishaa.utils.FirebaseUtils
+import com.google.firebase.auth.FirebaseUser
 
 private const val TAG = "ChatServer"
 
@@ -218,11 +220,11 @@ object ChatServer {
          */
 
 
-        var fdata : String = getRandomString(6);
+        var current: String? = FirebaseUtils.firebaseAuth.currentUser?.email?.split("@")?.get(0)
         val dataBuilder = AdvertiseData.Builder()
             .addServiceUuid(ParcelUuid(SERVICE_UUID))
             .setIncludeDeviceName(true)
-                .addServiceData(ParcelUuid(SERVICE_UUID), fdata.toByteArray())
+                .addServiceData(ParcelUuid(SERVICE_UUID), current?.toByteArray())
 
         /* For example - this will cause advertising to fail (exceeds size limit) */
         //String failureData = "asdghkajsghalkxcjhfa;sghtalksjcfhalskfjhasldkjfhdskf";

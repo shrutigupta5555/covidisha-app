@@ -163,6 +163,15 @@ open class DeviceScanViewModel(app: Application) : AndroidViewModel(app) {
                     if (userKiEmail == null){
                         userKiEmail = "null"
                     }
+
+                    var sdf = SimpleDateFormat("dd/M/yyyy")
+                    var currentDate = sdf.format(Date())
+                    var contactdata = ContactData(currentDate,userKiEmail)
+                    GlobalScope.launch(Dispatchers.IO) {
+                        repository.addContact(contactdata)
+
+                        Log.i("trycry", "added successfully")
+                    }
                     scanResults[userKiEmail] = itemkaitem.device
                 }
             }
