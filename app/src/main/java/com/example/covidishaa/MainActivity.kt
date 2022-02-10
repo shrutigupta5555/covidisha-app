@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         val user: FirebaseUser? = firebaseAuth.currentUser
         user?.let {
-            startActivity(Intent(this, HomeActivity::class.java))
+            startActivity(Intent(this, BottomNavActivity::class.java))
             toast("welcome back")
         }
     }
@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         toast("created account successfully !")
                         sendEmailVerification()
-                        startActivity(Intent(this, HomeActivity::class.java))
+                        startActivity(Intent(this, BottomNavActivity::class.java))
                         finish()
                     } else {
                         toast("failed to Authenticate !")
