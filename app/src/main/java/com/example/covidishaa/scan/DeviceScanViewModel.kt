@@ -18,14 +18,27 @@ package com.example.covidishaa.scan
 import android.app.Application
 import android.bluetooth.*
 import android.bluetooth.le.*
+import android.os.Build
 import android.os.Handler
 import android.os.ParcelUuid
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.lifecycle.*
 import com.example.covidishaa.bluetooth.SERVICE_UUID
+import com.example.covidishaa.data.ContactData
+import com.example.covidishaa.data.ContactDatabase
+import com.example.covidishaa.data.ContactRepository
+import com.example.covidishaa.data.ContactViewModel
 import com.example.covidishaa.scan.DeviceScanViewState.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 private const val TAG = "DeviceScanViewModel"
@@ -41,7 +54,8 @@ open class DeviceScanViewModel(app: Application) : AndroidViewModel(app) {
     // String key is the address of the bluetooth device
     private val scanResults = mutableMapOf<String, BluetoothDevice>()
 
-
+    //initialise contact view model
+//    private lateinit var mConactViewModel : ContactViewModel
 
     // BluetoothAdapter should never be null since BLE is required per
     // the <uses-feature> tag in the AndroidManifest.xml
@@ -58,10 +72,17 @@ open class DeviceScanViewModel(app: Application) : AndroidViewModel(app) {
 //    private var key : ParcelUuid? = null
 
 
+    val dao = ContactDatabase.getDatabase(app).contactDao()
+    var repository =  ContactRepository(dao)
+
+
+
+
     init {
         // Setup scan filters and settings
         scanFilters = buildScanFilters()
         scanSettings = buildScanSettings()
+
 
         // Start a scan for BLE devices
         startScan()
@@ -168,7 +189,14 @@ open class DeviceScanViewModel(app: Application) : AndroidViewModel(app) {
                 if (userKiEmail == null){
                     userKiEmail = "null"
                 }
+                var sdf = SimpleDateFormat("dd/M/yyyy")
+                var currentDate = sdf.format(Date())
+                var contactdata = ContactData(currentDate,userKiEmail)
+                GlobalScope.launch(Dispatchers.IO) {
+                    repository.addContact(contactdata)
 
+                    Log.i("trycry", "added successfully")
+                }
                 scanResults[userKiEmail] = item.device
 
             }

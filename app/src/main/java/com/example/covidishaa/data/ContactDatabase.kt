@@ -10,7 +10,7 @@ import androidx.room.TypeConverters
 import com.example.covidishaa.utils.Converters
 
 @Database(entities = [ContactData::class], version = 1, exportSchema = false)
-@TypeConverters(Converters::class)
+
 abstract class ContactDatabase: RoomDatabase() {
     abstract  fun contactDao(): ContactDao
 

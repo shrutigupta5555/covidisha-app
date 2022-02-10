@@ -9,8 +9,7 @@ import java.util.*
 @Entity(tableName = "contact_data")
 class ContactData(@ColumnInfo(name = "time") val text:String,
                   @PrimaryKey(autoGenerate = false) var email: String,
-                  @ColumnInfo(name = "date") val date : Date
-) {
+                 ) {
 
 }
 
