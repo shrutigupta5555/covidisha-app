@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.covidishaa.bluetooth.ChatServer
+import com.example.covidishaa.history.HistoryFragment
 import com.example.covidishaa.utils.FirebaseUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

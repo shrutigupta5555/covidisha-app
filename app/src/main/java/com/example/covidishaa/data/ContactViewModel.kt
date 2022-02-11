@@ -8,7 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ContactViewModel(application: Application): AndroidViewModel(application) {
-    private val readAllData : LiveData<List<ContactData>>
+    val readAllData : LiveData<List<ContactData>>
     private val repository: ContactRepository
 
     init {
