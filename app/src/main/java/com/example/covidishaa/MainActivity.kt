@@ -26,6 +26,7 @@ import com.example.covidishaa.bluetooth.ChatServer
 
 import android.widget.EditText
 import com.example.covidishaa.extensions.Extensions.toast
+import com.example.covidishaa.utils.FirebaseUtils
 import com.example.covidishaa.utils.FirebaseUtils.firebaseAuth
 import com.example.covidishaa.utils.FirebaseUtils.firebaseUser
 import com.google.firebase.auth.FirebaseUser
@@ -99,6 +100,7 @@ class MainActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         toast("created account successfully !")
                         sendEmailVerification()
+                        FirebaseUtils.db.collection("users").document(userEmail).set(hashMapOf("status" to "1"));
                         startActivity(Intent(this, BottomNavActivity::class.java))
                         finish()
                     } else {

@@ -6,20 +6,32 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.example.covidishaa.data.ContactViewModel
+import com.example.covidishaa.extensions.Extensions.toast
 import com.example.covidishaa.utils.FirebaseUtils
 import kotlinx.android.synthetic.main.fragment_profile.view.*
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.HashMap
+
 const val TAG = "profile"
 class ProfileFragment : Fragment() {
-
+    var email: String? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
-
+        lateinit var  mContactViewModel: ContactViewModel
         var current: String? = FirebaseUtils.firebaseAuth.currentUser?.email?.split("@")?.get(0)
-        var email : String? = FirebaseUtils.firebaseAuth.currentUser?.email
+        email  = FirebaseUtils.firebaseAuth.currentUser?.email
         var status: String? ;
         view.pfName.text = current
         view.pfEmail.text = email
@@ -59,11 +71,77 @@ class ProfileFragment : Fragment() {
             }
         }
 
+
+
+
+
         return view
     }
 
     override fun onStart() {
         super.onStart()
+
+        fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observer<T>) {
+            observe(lifecycleOwner, object : Observer<T> {
+                override fun onChanged(t: T?) {
+                    observer.onChanged(t)
+                    removeObserver(this)
+                }
+            })
+        }
+
+        fun calculateDiff(currItem: Long, dateItem: Long): Long {
+            val diff: Long = currItem - dateItem
+            val seconds = diff / 1000
+            val minutes = seconds / 60
+            val hours = minutes / 60
+            val days = hours / 24
+
+            return days
+        }
+        lateinit var  mContactViewModel: ContactViewModel
+        var data : HashMap<String, MutableList<String>> = HashMap<String, MutableList<String>>()
+
+        var currDate = Date()
+
+
+
+        view?.highBtn?.setOnClickListener(){
+            mContactViewModel = ViewModelProvider(this).get(ContactViewModel::class.java)
+            mContactViewModel.readAllData.observeOnce(viewLifecycleOwner, Observer { contact ->
+                for (item in contact) {
+
+                    val dateItem = SimpleDateFormat("dd/MM/yyyy").parse(item.text)
+                    val duration: String = calculateDiff(currDate.time, dateItem.time).toString()
+
+                    if (data.containsKey(duration)) {
+                        val list = data.get(duration)
+                        list?.add(item.email)
+                        if (list != null) {
+                            data.put(duration, list)
+                        }
+
+                    } else {
+                        val list = mutableListOf<String>()
+                        list.add(item.email)
+                        data.put(duration, list)
+                    }
+
+
+                    email?.let { it1 ->
+                        FirebaseUtils.db.collection("contacts").document(it1).set(data).addOnSuccessListener {
+                            Toast.makeText(activity, "msg", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+
+//                    Log.i(TAG, duration.toString())
+//                    val diff : Long = currDate.time - dateItem.time
+//                    Log.i(TAG, "date: $currDate, purana: $dateItem, og: ${item.text}, diff: $diff")
+                }
+            })
+
+        }
 
 
     }
