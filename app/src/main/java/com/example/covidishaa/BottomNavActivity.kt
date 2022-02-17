@@ -60,12 +60,12 @@ class BottomNavActivity : AppCompatActivity() {
 
                 R.id.BNMHistory -> {
                     setCurrentFragment(historyFragment)
-                    Toast.makeText(this, "Profile selected", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "History selected", Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.BNMProfile -> {
                     setCurrentFragment(profileFragment)
-                    Toast.makeText(this, "History selected", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Profile selected", Toast.LENGTH_SHORT).show()
                     true
                 }
                 else -> true
