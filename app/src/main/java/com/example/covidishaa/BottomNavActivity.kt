@@ -9,7 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.covidishaa.bluetooth.ChatServer
 import com.example.covidishaa.history.HistoryFragment
+import com.example.covidishaa.stats.StatsFragment
 import com.example.covidishaa.utils.FirebaseUtils
+import com.example.covidishaa.vaccine.VaccineFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class BottomNavActivity : AppCompatActivity() {
@@ -46,6 +48,8 @@ class BottomNavActivity : AppCompatActivity() {
         val homeFragment = HomeFragment()
         val historyFragment = HistoryFragment()
         val profileFragment = ProfileFragment()
+        val vaccineFragment = VaccineFragment()
+        val statsFragment = StatsFragment()
 
         setCurrentFragment(homeFragment)
 
@@ -66,6 +70,16 @@ class BottomNavActivity : AppCompatActivity() {
                 R.id.BNMProfile -> {
                     setCurrentFragment(profileFragment)
                     Toast.makeText(this, "Profile selected", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.BNMVaccine -> {
+                    setCurrentFragment(vaccineFragment)
+                    Toast.makeText(this, "Vaccine selected", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.BNMStats -> {
+                    setCurrentFragment(statsFragment)
+                    Toast.makeText(this, "Stats selected", Toast.LENGTH_SHORT).show()
                     true
                 }
                 else -> true

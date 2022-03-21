@@ -13,4 +13,12 @@
         android:id="@+id/BNMHistory"
         android:icon="@drawable/ic_baseline_history_24"
         android:title="History" />
+    <item
+        android:id="@+id/BNMVaccine"
+        android:icon="@drawable/ic_calendar"
+        android:title="Vaccine" />
+    <item
+        android:id="@+id/BNMStats"
+        android:icon="@drawable/ic_stats_24"
+        android:title="Stats" />
 </menu>
