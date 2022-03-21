@@ -79,6 +79,9 @@ dependencies {
 
     implementation 'com.google.android.material:material:1.4.0'
 
+    //flask localhost
+    implementation 'com.github.kittinunf.fuel:fuel:2.3.1'
+
 
     // Navigation Component
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'

@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.covidishaa.data.ContactViewModel
 import com.example.covidishaa.extensions.Extensions.toast
 import com.example.covidishaa.utils.FirebaseUtils
+import com.github.kittinunf.fuel.Fuel
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 import java.text.SimpleDateFormat
 import java.time.format.DateTimeFormatter
@@ -107,6 +108,7 @@ class ProfileFragment : Fragment() {
 
 
         view?.highBtn?.setOnClickListener(){
+            email?.let { it1 -> Log.i("hemhe", it1) }
             mContactViewModel = ViewModelProvider(this).get(ContactViewModel::class.java)
             mContactViewModel.readAllData.observeOnce(viewLifecycleOwner, Observer { contact ->
                 for (item in contact) {
@@ -128,17 +130,30 @@ class ProfileFragment : Fragment() {
                     }
 
 
-                    email?.let { it1 ->
-                        FirebaseUtils.db.collection("contacts").document(it1).set(data).addOnSuccessListener {
-                            Toast.makeText(activity, "msg", Toast.LENGTH_SHORT).show()
-                        }
-                    }
 
 
 //                    Log.i(TAG, duration.toString())
 //                    val diff : Long = currDate.time - dateItem.time
 //                    Log.i(TAG, "date: $currDate, purana: $dateItem, og: ${item.text}, diff: $diff")
                 }
+
+
+
+                email?.let { it1 ->
+
+
+                    FirebaseUtils.db.collection("contacts").document(it1).set(data).addOnSuccessListener {
+//                           add http call to notify
+
+                        Fuel.get("https://covidisha.herokuapp.com/notify/$it1").response { request, response, result ->
+                            Log.i("hemhe", response.toString())
+                        }
+                        Toast.makeText(activity, "Data uploaded successfully", Toast.LENGTH_SHORT).show()
+                    }.addOnFailureListener {
+                        Toast.makeText(activity, "There was some error, try again later", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
             })
 
         }
