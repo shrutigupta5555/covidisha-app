@@ -25,6 +25,7 @@ class BottomNavActivity : AppCompatActivity() {
     // Run the chat server as long as the app is on screen
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+       supportActionBar?.title = "CoviDisha"
         menuInflater.inflate(R.menu.menu_logout, menu)
         return true
     }
