@@ -21,4 +21,5 @@
         android:id="@+id/BNMStats"
         android:icon="@drawable/ic_stats_24"
         android:title="Stats" />
+
 </menu>

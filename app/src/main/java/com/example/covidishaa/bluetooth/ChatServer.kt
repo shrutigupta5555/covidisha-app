@@ -220,7 +220,8 @@ object ChatServer {
          */
 
 
-        var current: String? = FirebaseUtils.firebaseAuth.currentUser?.email?.split("@")?.get(0)
+//        var current: String? = FirebaseUtils.firebaseAuth.currentUser?.email?.split("@")?.get(0)
+        var current: String = "hemlo"
         val dataBuilder = AdvertiseData.Builder()
             .addServiceUuid(ParcelUuid(SERVICE_UUID))
             .setIncludeDeviceName(true)
