@@ -11,13 +11,14 @@ import androidx.fragment.app.Fragment
 import com.example.covidishaa.bluetooth.ChatServer
 import com.example.covidishaa.utils.FirebaseUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_main.*
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        Log.i("fuckthis", FirebaseUtils.firebaseAuth.currentUser.toString()+"-=-=-=-=-home=-=")
         setupNavigation()
     }
 
@@ -25,6 +26,12 @@ class HomeActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         ChatServer.startServer(application)
+
+        val user: FirebaseUser? = FirebaseUtils.firebaseAuth.currentUser
+        Log.i("fuckthis", """${user.toString()}-----------------""")
+        if (user == null) {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
 
     override fun onStop() {

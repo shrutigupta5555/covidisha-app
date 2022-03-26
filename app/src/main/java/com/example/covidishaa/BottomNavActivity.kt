@@ -2,24 +2,37 @@ package com.example.covidishaa
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.covidishaa.bluetooth.ChatServer
+import com.example.covidishaa.extensions.Extensions.toast
 import com.example.covidishaa.history.HistoryFragment
 import com.example.covidishaa.stats.StatsFragment
 import com.example.covidishaa.utils.FirebaseUtils
 import com.example.covidishaa.vaccine.VaccineFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseUser
 
 class BottomNavActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bottom_nav)
-
+        Log.i("fuckthis", FirebaseUtils.firebaseAuth.currentUser.toString()+"-=-=-=-=-=-=")
         setupNavigation()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val user: FirebaseUser? = FirebaseUtils.firebaseAuth.currentUser
+        Log.i("fuckthis", """${user.toString()}-----------------""")
+        if (user == null) {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
     }
 
     // Run the chat server as long as the app is on screen
