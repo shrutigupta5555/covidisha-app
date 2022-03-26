@@ -31,11 +31,10 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
         lateinit var  mContactViewModel: ContactViewModel
-        var current: String? = FirebaseUtils.firebaseAuth.currentUser?.email?.split("@")?.get(0)
-        email  = FirebaseUtils.firebaseAuth.currentUser?.email
+        var current: String? = FirebaseUtils.firebaseAuth.currentUser?.phoneNumber
+        email  = current
         var status: String? ;
         view.pfName.text = current
-        view.pfEmail.text = email
 
 
         val docRef = email?.let { FirebaseUtils.db.collection("users").document(it) }
