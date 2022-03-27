@@ -17,10 +17,12 @@ package com.example.covidishaa
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.covidishaa.extensions.Extensions.toast
 import com.example.covidishaa.utils.FirebaseUtils
 import com.example.covidishaa.utils.FirebaseUtils.firebaseAuth
@@ -45,6 +47,23 @@ class MainActivity : AppCompatActivity() {
     lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
 
+    var timer = object: CountDownTimer(60000, 1000) {
+        override fun onTick(millisUntilFinished: Long) {
+            tvResendOTP.setText("Resend OTP in " + (millisUntilFinished / 1000).toInt() + " seconds")
+        }
+
+        override fun onFinish() {
+            btnCreateAccount.isEnabled = true
+            btnCreateAccount.setBackgroundColor(ContextCompat.getColor(textView.context, R.color.white))
+            btnResendOTP.isClickable = true
+        }
+    }
+
+    fun cancelTimer() {
+        if(timer!=null)
+            timer.cancel();
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +73,7 @@ class MainActivity : AppCompatActivity() {
 
         // start verification on click of the button
         btnCreateAccount.setOnClickListener {
+//            tvResendOTP.text = "Resend OTP in 60 seconds"
             login()
         }
 
@@ -88,9 +108,10 @@ class MainActivity : AppCompatActivity() {
 
                 number = etMobile.text.trim().toString()
 
-                // get the phone number from edit text and append the country cde with it
 
-                //validate data
+                //cancel timer
+                cancelTimer()
+
 
                 // Start a new activity using intent
                 // also send the storedVerificationId using intent
@@ -136,9 +157,15 @@ class MainActivity : AppCompatActivity() {
     private fun login() {
         number = etMobile.text.trim().toString()
 
+
+
         // get the phone number from edit text and append the country cde with it
         if (number.isNotEmpty() && number.length == 10){
 
+            timer.start()
+            btnCreateAccount.isEnabled = false
+            btnCreateAccount.setBackgroundColor(ContextCompat.getColor(textView.context, R.color.colorAccent))
+            btnResendOTP.isClickable = false
             number = "+91$number"
             sendVerificationCode(number)
         }else{
