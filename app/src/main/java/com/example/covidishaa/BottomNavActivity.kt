@@ -21,19 +21,14 @@ class BottomNavActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bottom_nav)
-        Log.i("fuckthis", FirebaseUtils.firebaseAuth.currentUser.toString()+"-=-=-=-=-=-=")
-        setupNavigation()
-    }
-
-    override fun onStart() {
-        super.onStart()
         val user: FirebaseUser? = FirebaseUtils.firebaseAuth.currentUser
-        Log.i("fuckthis", """${user.toString()}-----------------""")
         if (user == null) {
             startActivity(Intent(this, MainActivity::class.java))
         }
-
+        setupNavigation()
     }
+
+
 
     // Run the chat server as long as the app is on screen
 

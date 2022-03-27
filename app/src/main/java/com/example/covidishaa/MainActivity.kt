@@ -86,11 +86,19 @@ class MainActivity : AppCompatActivity() {
                 storedVerificationId = verificationId
                 resendToken = token
 
+                number = etMobile.text.trim().toString()
+
+                // get the phone number from edit text and append the country cde with it
+
+
+                Log.i("ff", number+"%%%%%")
+
                 // Start a new activity using intent
                 // also send the storedVerificationId using intent
                 // we will use this id to send the otp back to firebase
                 val intent = Intent(applicationContext, OtpActivity::class.java)
                 intent.putExtra("storedVerificationId", storedVerificationId)
+                intent.putExtra("phone", number)
                 startActivity(intent)
                 finish()
             }
@@ -103,7 +111,6 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         val user: FirebaseUser? = firebaseAuth.currentUser
-        Log.i("fuckthis", """${user.toString()}-----------------""")
         user?.let {
             startActivity(Intent(this, BottomNavActivity::class.java))
             toast("welcome back")

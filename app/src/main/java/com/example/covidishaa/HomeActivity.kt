@@ -18,7 +18,6 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.i("fuckthis", FirebaseUtils.firebaseAuth.currentUser.toString()+"-=-=-=-=-home=-=")
         setupNavigation()
     }
 
@@ -28,7 +27,6 @@ class HomeActivity : AppCompatActivity() {
         ChatServer.startServer(application)
 
         val user: FirebaseUser? = FirebaseUtils.firebaseAuth.currentUser
-        Log.i("fuckthis", """${user.toString()}-----------------""")
         if (user == null) {
             startActivity(Intent(this, MainActivity::class.java))
         }
