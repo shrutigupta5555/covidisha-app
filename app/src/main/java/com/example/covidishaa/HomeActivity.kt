@@ -18,6 +18,10 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val user: FirebaseUser? = FirebaseUtils.firebaseAuth.currentUser
+        if (user == null) {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
         setupNavigation()
     }
 

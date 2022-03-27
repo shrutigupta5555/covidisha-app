@@ -90,8 +90,7 @@ class MainActivity : AppCompatActivity() {
 
                 // get the phone number from edit text and append the country cde with it
 
-
-                Log.i("ff", number+"%%%%%")
+                //validate data
 
                 // Start a new activity using intent
                 // also send the storedVerificationId using intent
@@ -138,11 +137,14 @@ class MainActivity : AppCompatActivity() {
         number = etMobile.text.trim().toString()
 
         // get the phone number from edit text and append the country cde with it
-        if (number.isNotEmpty()){
+        if (number.isNotEmpty() && number.length == 10){
+
             number = "+91$number"
             sendVerificationCode(number)
         }else{
-            Toast.makeText(this, "Enter mobile number", Toast.LENGTH_SHORT).show()
+
+            etMobile.error = "Enter valid phone number"
+//            Toast.makeText(this, "Enter valid phone number", Toast.LENGTH_SHORT).show()
         }
     }
 

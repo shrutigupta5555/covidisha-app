@@ -8,8 +8,6 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.covidishaa.bluetooth.ChatServer
-import com.example.covidishaa.extensions.Extensions.toast
 import com.example.covidishaa.history.HistoryFragment
 import com.example.covidishaa.stats.StatsFragment
 import com.example.covidishaa.utils.FirebaseUtils
@@ -23,9 +21,39 @@ class BottomNavActivity : AppCompatActivity() {
         setContentView(R.layout.activity_bottom_nav)
         val user: FirebaseUser? = FirebaseUtils.firebaseAuth.currentUser
         if (user == null) {
-            startActivity(Intent(this, MainActivity::class.java))
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            finish()
         }
         setupNavigation()
+    }
+
+    override fun onStart() {
+
+        super.onStart()
+
+        val user: FirebaseUser? = FirebaseUtils.firebaseAuth.currentUser
+        if (user == null) {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            finish()
+
+        }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val user: FirebaseUser? = FirebaseUtils.firebaseAuth.currentUser
+        if (user == null) {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            finish()
+
+        }
     }
 
 
