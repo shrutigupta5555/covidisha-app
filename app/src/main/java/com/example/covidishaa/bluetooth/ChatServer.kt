@@ -76,6 +76,8 @@ object ChatServer {
     private var gatt: BluetoothGatt? = null
     private var messageCharacteristic: BluetoothGattCharacteristic? = null
 
+    private var randomString = null
+
     fun startServer(app: Application) {
         bluetoothManager = app.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
         if (!adapter.isEnabled) {
@@ -222,19 +224,22 @@ object ChatServer {
 
 
 
-//        var current: String? = FirebaseUtils.firebaseAuth.currentUser?.email?.split("@")?.get(0)
-        val randomString = getRandomString(5)
-        var current: String = randomString
-        Log.i("curr", current)
+
+
+        var current: String? = FirebaseUtils.firebaseAuth.currentUser?.displayName
+
+
+
+
+
+
 
         val dataBuilder = AdvertiseData.Builder()
             .addServiceUuid(ParcelUuid(SERVICE_UUID))
             .setIncludeDeviceName(true)
-                .addServiceData(ParcelUuid(SERVICE_UUID), current.toByteArray())
+                .addServiceData(ParcelUuid(SERVICE_UUID), current?.toByteArray())
 
-        /* For example - this will cause advertising to fail (exceeds size limit) */
-        //String failureData = "asdghkajsghalkxcjhfa;sghtalksjcfhalskfjhasldkjfhdskf";
-        //dataBuilder.addServiceData(Constants.Service_UUID, failureData.getBytes());
+
         return dataBuilder.build()
     }
 

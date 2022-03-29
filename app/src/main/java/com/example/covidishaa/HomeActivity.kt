@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.covidishaa.bluetooth.ChatServer
 import com.example.covidishaa.utils.FirebaseUtils
+import com.example.covidishaa.utils.FirebaseUtils.db
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_home.*
@@ -28,7 +29,12 @@ class HomeActivity : AppCompatActivity() {
     // Run the chat server as long as the app is on screen
     override fun onStart() {
         super.onStart()
+
+
+
         ChatServer.startServer(application)
+
+
     }
 
     override fun onStop() {
