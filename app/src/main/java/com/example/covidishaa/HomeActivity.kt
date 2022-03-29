@@ -12,28 +12,23 @@ import com.example.covidishaa.bluetooth.ChatServer
 import com.example.covidishaa.utils.FirebaseUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseUser
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val user: FirebaseUser? = FirebaseUtils.firebaseAuth.currentUser
-        if (user == null) {
-            startActivity(Intent(this, MainActivity::class.java))
-        }
+
         setupNavigation()
+
+
     }
 
     // Run the chat server as long as the app is on screen
     override fun onStart() {
         super.onStart()
         ChatServer.startServer(application)
-
-        val user: FirebaseUser? = FirebaseUtils.firebaseAuth.currentUser
-        if (user == null) {
-            startActivity(Intent(this, MainActivity::class.java))
-        }
     }
 
     override fun onStop() {

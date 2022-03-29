@@ -223,13 +223,14 @@ object ChatServer {
 
 
 //        var current: String? = FirebaseUtils.firebaseAuth.currentUser?.email?.split("@")?.get(0)
-        var current: String? = FirebaseUtils.firebaseAuth.currentUser?.phoneNumber
-
+        val randomString = getRandomString(5)
+        var current: String = randomString
+        Log.i("curr", current)
 
         val dataBuilder = AdvertiseData.Builder()
             .addServiceUuid(ParcelUuid(SERVICE_UUID))
             .setIncludeDeviceName(true)
-                .addServiceData(ParcelUuid(SERVICE_UUID), current?.toByteArray())
+                .addServiceData(ParcelUuid(SERVICE_UUID), current.toByteArray())
 
         /* For example - this will cause advertising to fail (exceeds size limit) */
         //String failureData = "asdghkajsghalkxcjhfa;sghtalksjcfhalskfjhasldkjfhdskf";
