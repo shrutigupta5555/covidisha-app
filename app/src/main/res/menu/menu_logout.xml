@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/miMedicinePortal"
-        android:title="Medicine Portal" />
+        android:id="@+id/miProfile"
+        android:title="Profile" />
     <item
         android:id="@+id/miLogOut"
         android:title="Log Out" />

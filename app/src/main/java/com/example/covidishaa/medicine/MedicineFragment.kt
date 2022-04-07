@@ -1,11 +1,14 @@
 package com.example.covidishaa.medicine
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.example.covidishaa.R
+import kotlinx.android.synthetic.main.fragment_medicine.*
+import kotlinx.android.synthetic.main.fragment_medicine.view.*
 
 
 class MedicineFragment : Fragment() {
@@ -22,8 +25,17 @@ class MedicineFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        
-        return inflater.inflate(R.layout.fragment_medicine, container, false)
+        val view =  inflater.inflate(R.layout.fragment_medicine, container, false)
+
+        view.button_doner.setOnClickListener {
+            val t: FragmentTransaction = this.requireFragmentManager().beginTransaction()
+            val mFrag: Fragment = DonateFragment()
+            t.replace(R.id.flFragment, mFrag)
+            t.commit()
+        }
+
+
+        return view
     }
 
 }

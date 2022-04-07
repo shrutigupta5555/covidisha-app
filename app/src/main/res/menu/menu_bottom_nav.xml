@@ -4,22 +4,24 @@
         android:id="@+id/BNMhome"
         android:icon="@drawable/ic_outline_home_24"
         android:title="Home" />
-
-    <item
-        android:id="@+id/BNMProfile"
-        android:icon="@drawable/ic_baseline_person_outline_24"
-        android:title="Profile" />
     <item
         android:id="@+id/BNMHistory"
         android:icon="@drawable/ic_baseline_history_24"
-        android:title="History" />
+        android:title="Tracker" />
+
     <item
-        android:id="@+id/BNMVaccine"
-        android:icon="@drawable/ic_calendar"
-        android:title="Vaccine" />
+        android:id="@+id/BNMMed"
+        android:icon="@drawable/ic_hospital"
+        android:title="Donate Medicines" />
+
+
     <item
         android:id="@+id/BNMStats"
         android:icon="@drawable/ic_stats_24"
         android:title="Stats" />
+    <item
+        android:id="@+id/BNMVaccine"
+        android:icon="@drawable/ic_calendar"
+        android:title="Vaccine" />
 
 </menu>

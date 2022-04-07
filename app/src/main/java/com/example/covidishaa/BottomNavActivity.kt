@@ -2,19 +2,19 @@ package com.example.covidishaa
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.example.covidishaa.history.HistoryFragment
 import com.example.covidishaa.medicine.MedicineFragment
 import com.example.covidishaa.stats.StatsFragment
 import com.example.covidishaa.utils.FirebaseUtils
 import com.example.covidishaa.vaccine.VaccineFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.auth.FirebaseUser
 
 class BottomNavActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,7 +56,7 @@ class BottomNavActivity : AppCompatActivity() {
             val logoutIntent = Intent(this, MainActivity::class.java)
             logoutIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(logoutIntent)
-        } else if(item.itemId == R.id.miMedicinePortal){
+        } else if(item.itemId == R.id.miProfile){
 
         }
         return super.onOptionsItemSelected(item)
@@ -87,9 +87,9 @@ class BottomNavActivity : AppCompatActivity() {
                     Toast.makeText(this, "History selected", Toast.LENGTH_SHORT).show()
                     true
                 }
-                R.id.BNMProfile -> {
-                    setCurrentFragment(profileFragment)
-                    Toast.makeText(this, "Profile selected", Toast.LENGTH_SHORT).show()
+                R.id.BNMMed -> {
+                    setCurrentFragment(medicineFragment)
+                    Toast.makeText(this, "Medicine selected", Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.BNMVaccine -> {

@@ -227,7 +227,7 @@ object ChatServer {
 
 
         var current: String? = FirebaseUtils.firebaseAuth.currentUser?.displayName
-
+        Log.i("purva", current.toString()+"niing")
 
 
 
