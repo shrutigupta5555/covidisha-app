@@ -7,8 +7,6 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import com.example.covidishaa.history.HistoryFragment
 import com.example.covidishaa.medicine.MedicineFragment
 import com.example.covidishaa.stats.StatsFragment
@@ -42,7 +40,7 @@ class BottomNavActivity : AppCompatActivity() {
     // Run the chat server as long as the app is on screen
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-       supportActionBar?.title = "CoviDisha"
+        supportActionBar?.title = "CoviDisha"
         menuInflater.inflate(R.menu.menu_logout, menu)
         return true
     }
@@ -57,6 +55,12 @@ class BottomNavActivity : AppCompatActivity() {
             logoutIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(logoutIntent)
         } else if(item.itemId == R.id.miProfile){
+
+            val fragment: Fragment = ProfileFragment()
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.flFragment, fragment)
+                commit()
+            }
 
         }
         return super.onOptionsItemSelected(item)
@@ -109,8 +113,8 @@ class BottomNavActivity : AppCompatActivity() {
     }
 
     private fun setCurrentFragment(fragment: Fragment)=
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.flFragment, fragment)
-            commit()
-        }
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.flFragment, fragment)
+                commit()
+            }
 }
