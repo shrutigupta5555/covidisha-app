@@ -90,7 +90,9 @@ class DonateFragment : Fragment() {
                                     "lname" to lname,
                                     "dl" to d1,
                                     "d2" to d2,
-                                    "url" to downloaduri
+                                    "url" to downloaduri,
+                                    "verified" to "false",
+                                    "phone" to currentUser
                             )
 
                             docref.document(currentUser).set(data).addOnSuccessListener { documentReference ->
@@ -234,6 +236,8 @@ class DonateFragment : Fragment() {
             }
 
         })
+
+
 
         button_da!!.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
