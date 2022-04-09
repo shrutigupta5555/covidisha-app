@@ -28,8 +28,17 @@ class MedicineFragment : Fragment() {
         val view =  inflater.inflate(R.layout.fragment_medicine, container, false)
 
         view.button_doner.setOnClickListener {
+
             val t: FragmentTransaction = this.requireFragmentManager().beginTransaction()
             val mFrag: Fragment = DonateFragment()
+            t.replace(R.id.flFragment, mFrag)
+            t.commit()
+        }
+
+        view.button_profile.setOnClickListener {
+
+            val t: FragmentTransaction = this.requireFragmentManager().beginTransaction()
+            val mFrag: Fragment = MedicineProfileFragment()
             t.replace(R.id.flFragment, mFrag)
             t.commit()
         }

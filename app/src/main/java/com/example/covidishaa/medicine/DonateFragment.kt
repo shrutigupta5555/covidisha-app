@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment
 import com.example.covidishaa.R
 import com.example.covidishaa.utils.FirebaseUtils
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.OnProgressListener
 import com.google.firebase.storage.StorageReference
@@ -23,6 +24,7 @@ import com.google.firebase.storage.UploadTask
 import kotlinx.android.synthetic.main.fragment_donate.*
 import kotlinx.android.synthetic.main.fragment_donate.view.*
 import kotlinx.android.synthetic.main.fragment_medicine.*
+import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -71,8 +73,10 @@ class DonateFragment : Fragment() {
             val progressDialog = ProgressDialog(context)
             progressDialog.setTitle("Uploading")
             progressDialog.show()
-            val currentUser:String = FirebaseUtils.firebaseAuth.currentUser?.phoneNumber.toString()
-            val riversRef: StorageReference = storageReference.child("images/" + currentUser + ".jpg")
+            val user: FirebaseUser? = FirebaseUtils.firebaseAuth.currentUser
+            val currentUser:String = user?.phoneNumber.toString()
+            val imagepath :String = user?.uid.toString() + Timestamp(System.currentTimeMillis()).toString()
+            val riversRef: StorageReference = storageReference.child("images/" + imagepath + ".jpg")
 
             riversRef.putFile(imageUri!!)
                     .addOnSuccessListener { task ->
@@ -95,7 +99,7 @@ class DonateFragment : Fragment() {
                                     "phone" to currentUser
                             )
 
-                            docref.document(currentUser).set(data).addOnSuccessListener { documentReference ->
+                            docref.add(data).addOnSuccessListener { documentReference ->
                                 Log.d("TAG", "DocumentSnapshot written ")
                             }
                                     .addOnFailureListener { e ->
