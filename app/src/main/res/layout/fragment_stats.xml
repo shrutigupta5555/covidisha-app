@@ -30,6 +30,12 @@
             android:gravity="center_horizontal" />
 
         <!--Text view to display Total Cases-->
+        <Button
+            android:id="@+id/indian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="view indian stats" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
