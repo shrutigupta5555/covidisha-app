@@ -24,7 +24,7 @@ class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.MyViewHolder>() {
 
     private lateinit var db : FirebaseFirestore
     var status = arrayOf("Safe", "Low Risk", "High Risk", "Infected" )
-
+    var drawstatus = arrayOf(R.drawable.ic_safe_24, R.drawable.ic_low_24, R.drawable.ic_high_24, R.drawable.ic_infected_24 )
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryAdapter.MyViewHolder {
         return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.custom_row, parent ,false))
 
@@ -41,6 +41,7 @@ class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.MyViewHolder>() {
             for (document in documents) {
                 holder.itemView.rvStatus.text = status[Integer.parseInt(document.data["status"].toString()) - 1]
                 holder.itemView.rvPhone.text = document.id
+                holder.itemView.rvStatus.setCompoundDrawablesWithIntrinsicBounds(drawstatus[Integer.parseInt(document.data["status"].toString()) - 1], 0,0,0)
                 Log.d("history", "${document.id} => ${document.data}")
             }
         }
