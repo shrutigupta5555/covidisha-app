@@ -66,6 +66,7 @@ class ProfileFragment : Fragment() {
                       view.imgRiskStatus.setImageResource(R.drawable.ic_high_risk)
                       view.highBtn.visibility = View.VISIBLE
                   }
+                view.tvAlert.text = snapshot.data?.get("alert").toString()
             } else {
                 Log.d(TAG, "Current data: null")
             }

@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.example.covidishaa.R
 import com.example.covidishaa.utils.FirebaseUtils
 import com.google.android.gms.tasks.OnCompleteListener
@@ -101,6 +102,10 @@ class DonateFragment : Fragment() {
 
                             docref.add(data).addOnSuccessListener { documentReference ->
                                 Log.d("TAG", "DocumentSnapshot written ")
+                                val t: FragmentTransaction = this.requireFragmentManager().beginTransaction()
+                                val mFrag: Fragment = MedicineFragment()
+                                t.replace(R.id.flFragment, mFrag)
+                                t.commit()
                             }
                                     .addOnFailureListener { e ->
                                         Log.w("TAG", "Error adding document", e)
