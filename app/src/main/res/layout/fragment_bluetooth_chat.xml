@@ -37,6 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:backgroundTint="#03DAC5"
             android:text="@string/connect_device_prompt"/>
     </LinearLayout>
 
@@ -58,7 +59,8 @@
             android:id="@+id/messages"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:backgroundTint="@color/colorAccent" />
 
         <EditText
             android:id="@+id/message_text"
@@ -69,7 +71,8 @@
             android:id="@+id/send_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/send_message_button"/>
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/send_message_button" />
     </LinearLayout>
 
 </FrameLayout>
