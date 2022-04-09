@@ -11,9 +11,13 @@
         android:id="@+id/idEdtPinCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
         android:layout_toStartOf="@id/idBtnSearch"
         android:layout_toLeftOf="@id/idBtnSearch"
+        android:backgroundTint="@color/background"
         android:hint="Enter PinCode"
         android:inputType="number" />
 
@@ -29,6 +33,7 @@
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
         android:background="@color/colorAccent"
+        android:backgroundTint="@color/colorAccent"
         android:text="Search"
         android:textAllCaps="false"
         android:textColor="@color/white" />
@@ -39,6 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:backgroundTint="@color/background"
         android:visibility="gone" />
 
     <!--recycler view for displaying results in the form of list-->
@@ -47,6 +53,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/idEdtPinCode"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/background"
         tools:listitem="@layout/center_rv_item" />
 
 </RelativeLayout>
