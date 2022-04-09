@@ -7,14 +7,14 @@
     tools:context=".SignInActivity">
 
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sign_in"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textColor="#555759"
+        android:textColorHint="#555759"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/etSignInEmail"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,6 +70,7 @@
         android:layout_marginVertical="20dp"
         android:backgroundTint="@color/colorAccent"
         android:text="@string/sign_in"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/btnCreateAccount2"
         app:layout_constraintEnd_toEndOf="@+id/etSignInPassword"
         app:layout_constraintStart_toStartOf="@+id/etSignInPassword"

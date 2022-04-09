@@ -62,6 +62,7 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:text="Recent Contacts"
+            android:textColor="#3C3F41"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView

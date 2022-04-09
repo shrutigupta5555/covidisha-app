@@ -15,6 +15,7 @@
         android:layout_marginBottom="84dp"
         android:backgroundTint="@color/colorAccent"
         android:text="Medicine Portal"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

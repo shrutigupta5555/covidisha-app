@@ -16,8 +16,7 @@
         android:layout_marginTop="44dp"
         android:text="@string/create_account"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -44,6 +43,7 @@
         android:layout_marginTop="40dp"
         android:backgroundTint="@color/colorAccent"
         android:text="Get OTP"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnResendOTP"
         app:layout_constraintTop_toBottomOf="@+id/etMobile" />
@@ -55,6 +55,7 @@
         android:layout_marginTop="40dp"
         android:backgroundTint="@color/colorAccent"
         android:text="Resend OTP"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/btnCreateAccount"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etMobile" />

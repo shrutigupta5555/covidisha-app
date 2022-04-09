@@ -21,13 +21,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:text="Global Stats"
-            android:textColor="#050505"
-            android:textAllCaps="true"
             android:textAlignment="center"
+            android:textAllCaps="true"
             android:textSize="35sp"
-            android:textStyle="bold"
-            android:gravity="center_horizontal" />
+            android:textStyle="bold" />
 
         <!--Text view to display Total Cases-->
         <Button
@@ -35,7 +34,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorAccent"
-            android:text="view indian stats" />
+            android:text="view indian stats"
+            android:textColor="@color/white" />
 
         <TextView
             android:layout_width="match_parent"
