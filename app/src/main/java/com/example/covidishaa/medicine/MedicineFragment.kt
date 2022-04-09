@@ -35,13 +35,7 @@ class MedicineFragment : Fragment() {
             t.commit()
         }
 
-        view.button_profile.setOnClickListener {
 
-            val t: FragmentTransaction = this.requireFragmentManager().beginTransaction()
-            val mFrag: Fragment = MedicineProfileFragment()
-            t.replace(R.id.flFragment, mFrag)
-            t.commit()
-        }
 
         view.button_receiver.setOnClickListener {
             val t: FragmentTransaction = this.requireFragmentManager().beginTransaction()
