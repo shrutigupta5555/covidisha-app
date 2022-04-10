@@ -73,7 +73,7 @@ class HomeActivity : AppCompatActivity() {
                     true
                 }
                 R.id.BNMMed -> {
-                    Toast.makeText(this, "History selected", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Tracker selected", Toast.LENGTH_SHORT).show()
                     true
                 }
                 else -> true

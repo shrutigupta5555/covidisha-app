@@ -80,6 +80,7 @@ class BottomNavActivity : AppCompatActivity() {
         navView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.BNMhome -> {
+
                     setCurrentFragment(homeFragment)
                     Toast.makeText(this, "Profile selected", Toast.LENGTH_SHORT).show()
                     true
@@ -88,7 +89,7 @@ class BottomNavActivity : AppCompatActivity() {
 
                 R.id.BNMHistory -> {
                     setCurrentFragment(historyFragment)
-                    Toast.makeText(this, "History selected", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Tracker selected", Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.BNMMed -> {

@@ -35,7 +35,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@color/white"
+        android:background="@color/colorAccent"
+        app:itemIconTint="#D3D3D3"
 
         app:menu="@menu/menu_bottom_nav" />
 </FrameLayout>
