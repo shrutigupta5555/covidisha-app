@@ -24,6 +24,7 @@ import kotlin.collections.HashMap
 const val TAG = "profile"
 class ProfileFragment : Fragment() {
     var email: String? = null
+    var unique: String? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,6 +33,7 @@ class ProfileFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
         lateinit var  mContactViewModel: ContactViewModel
         var current: String? = FirebaseUtils.firebaseAuth.currentUser?.phoneNumber
+        unique = FirebaseUtils.firebaseAuth.currentUser!!.displayName
         email  = current
         var status: String? ;
         view.pfName.text = current
@@ -139,18 +141,20 @@ class ProfileFragment : Fragment() {
 
 
 
-                email?.let { it1 ->
+                unique?.let { it1 ->
 
 
-                    FirebaseUtils.db.collection("contacts").document(it1).set(data).addOnSuccessListener {
-//                           add http call to notify
+                    email?.let { it2 ->
+                        FirebaseUtils.db.collection("contacts").document(it2).set(data).addOnSuccessListener {
+            //                           add http call to notify
 
-                        Fuel.get("https://covidisha.herokuapp.com/notify/$it1").response { request, response, result ->
-                            Log.i("hemhe", response.toString())
+                            Fuel.get("https://covidisha.herokuapp.com/notify/$it1").response { request, response, result ->
+                                Log.i("hemhe", response.toString())
+                            }
+                            Toast.makeText(activity, "Data uploaded successfully", Toast.LENGTH_SHORT).show()
+                        }.addOnFailureListener {
+                            Toast.makeText(activity, "There was some error, try again later", Toast.LENGTH_SHORT).show()
                         }
-                        Toast.makeText(activity, "Data uploaded successfully", Toast.LENGTH_SHORT).show()
-                    }.addOnFailureListener {
-                        Toast.makeText(activity, "There was some error, try again later", Toast.LENGTH_SHORT).show()
                     }
                 }
 
