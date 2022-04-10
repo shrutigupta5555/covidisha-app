@@ -76,7 +76,7 @@ class NeedMedicineFragment : Fragment() {
         rvContacts.layoutManager = LinearLayoutManager(context)
 
 
-        val medicineReference = db.collection("medicine")
+        val medicineReference = db.collection("medicine").whereEqualTo("verified", "true")
 
         medicineReference.addSnapshotListener{ snapshot, exception ->
             if (exception != null || snapshot == null){

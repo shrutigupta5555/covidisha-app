@@ -7,5 +7,6 @@ data class Medicine(
         @get:PropertyName("lname") @set:PropertyName("lname") var lname: String = "",
         @get:PropertyName("verified") @set:PropertyName("verified")  var verified: String = "",
         @get:PropertyName("url") @set:PropertyName("url")  var imageUrl : String = "",
-        @get:PropertyName("phone") @set:PropertyName("phone")  var phone : String = "")
+        @get:PropertyName("phone") @set:PropertyName("phone")  var phone : String = "",
+        @get:PropertyName("address") @set:PropertyName("address")  var addressfb : String = "")
 

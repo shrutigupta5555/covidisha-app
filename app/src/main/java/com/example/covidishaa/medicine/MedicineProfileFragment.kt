@@ -11,9 +11,7 @@ import com.example.covidishaa.R
 import com.example.covidishaa.utils.FirebaseUtils
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_medicine_profile.view.*
-import kotlinx.android.synthetic.main.fragment_medicine_profile.view.tvVerified
-import kotlinx.android.synthetic.main.item_contact.view.*
-import kotlinx.android.synthetic.main.item_contact.view.ivProfile
+import kotlinx.android.synthetic.main.fragment_medicine_profile.view.tvAddress
 
 
 class MedicineProfileFragment : Fragment() {
@@ -37,7 +35,7 @@ class MedicineProfileFragment : Fragment() {
 
             for (document in documents){
                 if (document != null) {
-                    view.tvVerified.text = "Verified:  ${document.data?.get("verified").toString()}"
+                    view.tvAddress.text = "Verified:  ${document.data?.get("verified").toString()}"
                     Glide.with(requireContext()).load(document.data?.get("url")).into(view.ivPrescription)
                     Log.d("TAG", "DocumentSnapshot data: ${document.data}")
                 } else {

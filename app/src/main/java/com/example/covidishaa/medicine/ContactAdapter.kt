@@ -35,8 +35,9 @@ class ContactAdapter(private val context: Context, private val contacts: List<Me
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(contact: Medicine) {
             itemView.tvName.text = contact.fname +  " "+  contact.lname
-            itemView.tvVerified.text = "Verfied: " + contact.verified
+            itemView.tvAddress.text = contact.addressfb
             itemView.tvPhone.text = contact.phone
+
             Glide.with(context).load(contact.imageUrl).into(itemView.ivProfile)
         }
     }

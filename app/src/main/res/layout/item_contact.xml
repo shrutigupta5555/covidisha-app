@@ -17,17 +17,19 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/tvVerified"
+        app:layout_constraintBottom_toTopOf="@+id/tvAddress"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivProfile"
         tools:text="Rahul Pandey" />
 
     <TextView
-        android:id="@+id/tvVerified"
+        android:id="@+id/tvAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_location"
+        android:drawableTint="@color/colorAccent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvName"
         tools:text="Verfied" />
@@ -49,7 +51,8 @@
         android:layout_marginStart="6dp"
         android:layout_marginTop="10dp"
         android:drawableLeft="@drawable/ic_baseline_person_outline_24"
+        android:drawableTint="@color/colorAccent"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvVerified" />
+        app:layout_constraintTop_toBottomOf="@+id/tvAddress" />
 </androidx.constraintlayout.widget.ConstraintLayout>

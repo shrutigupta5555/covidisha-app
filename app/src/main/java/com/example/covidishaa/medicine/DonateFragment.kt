@@ -54,6 +54,7 @@ class DonateFragment : Fragment() {
     var textview_da: TextView? = null
     var tv_fname: TextView? = null
     var tv_lname: EditText? = null
+    var tv_address: EditText? = null
     var ca = Calendar.getInstance()
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -66,7 +67,7 @@ class DonateFragment : Fragment() {
 
     var storageReference = FirebaseStorage.getInstance().reference
     //this method will upload the file
-    private fun uploadFile(fname : String, lname: String, d1: String, d2: String) {
+    private fun uploadFile(fname : String, lname: String, d1: String, d2: String, address: String) {
         //if there is a file to upload
         Log.i("chemck", imageUri.toString())
         if (imageUri != null) {
@@ -97,6 +98,7 @@ class DonateFragment : Fragment() {
                                     "d2" to d2,
                                     "url" to downloaduri,
                                     "verified" to "false",
+                                    "address" to address,
                                     "phone" to currentUser
                             )
 
@@ -187,7 +189,7 @@ class DonateFragment : Fragment() {
         tv_lname = this.et_lname
         textview_date = this.text_view_date_1
         button_date = this.button_date_1
-
+        tv_address = this.address
         textview_da = this.text_view_date_2
         button_da = this.button_date_2
 
@@ -238,9 +240,9 @@ class DonateFragment : Fragment() {
                 val lname = tv_lname?.text.toString()
                 val d1 = textview_date!!.text.toString()
                 val d2 = textview_da!!.text.toString()
-
+                val address = tv_address!!.text.toString()
                 //upload image
-                uploadFile(fname, lname, d1, d2)
+                uploadFile(fname, lname, d1, d2, address)
 
             }
 
